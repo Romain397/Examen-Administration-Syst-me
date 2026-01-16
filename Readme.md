@@ -58,3 +58,15 @@
 - Messages émis par les pilotes :
     ```bash
     dmesg | grep NOM_MODULE
+
+
+---
+
+## **Étape 5 – MS Windows / WSL**
+
+```markdown
+## MS Windows
+
+- WSL (Windows Subsystem for Linux) permet de lancer un environnement Linux sur Windows.
+- Permet d'exécuter des binaires Linux sans machine virtuelle.
+- Utilise un protocole interne pour traduire appels système Linux vers le noyau Windows.
