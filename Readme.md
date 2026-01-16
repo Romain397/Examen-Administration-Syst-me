@@ -100,8 +100,6 @@
     sudo dnf install git gcc gdb make
 
 
----
-
 ## Connexions utilisateurs et sudo
 
 ## Qui fait quoi ?
