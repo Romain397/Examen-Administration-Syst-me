@@ -69,7 +69,6 @@
 ## Sécurisation SSH
 
 - Modifier `/etc/ssh/sshd_config` pour :
-  - Interdire root login : `PermitRootLogin no`
-  - Utiliser clés SSH plutôt que mot de passe : `PasswordAuthentication no`
-  - Limiter les utilisateurs autorisés : `AllowUsers user1 user2`
-- Redémarrer le service SSH : `sudo systemctl restart ssh`
+  - Interdire root login
+  - Utiliser clés SSH plutôt que mot de passe 
+  - Limiter les utilisateurs autorisés 
