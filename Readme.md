@@ -56,5 +56,5 @@
     sudo modprobe -r NOM_MODULE  # décharger
 
 - Messages émis par les pilotes :
-        ```bash
-    dmesg | grep NOM_MODULE
+    ```bash
+dmesg | grep NOM_MODULE
