@@ -86,3 +86,17 @@
   ```bash
   du -sh /home/* | sort -hr | head -n 10
 
+
+---
+
+## Préparer un système pour développement
+
+### Debian/Ubuntu
+```bash
+sudo apt update
+sudo apt install build-essential git gcc gdb make
+
+### Redhat/Feodora
+sudo dnf groupinstall "Development Tools"
+sudo dnf install git gcc gdb make
+
