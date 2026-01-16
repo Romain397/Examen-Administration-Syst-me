@@ -62,9 +62,6 @@
 
 ---
 
-## MS Windows / WSL**
-
-
 ## MS Windows
 
 - WSL (Windows Subsystem for Linux) permet de lancer un environnement Linux sur Windows.
