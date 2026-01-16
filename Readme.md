@@ -47,14 +47,14 @@
   lsmod
 
 - Fichiers binaires des modules :
-
+    ```bash
 modinfo NOM_MODULE
 
 - Charger/décharger un module :
-
+    ```bash
 sudo modprobe NOM_MODULE  # charger
 sudo modprobe -r NOM_MODULE  # décharger
 
 - Messages émis par les pilotes :
-
+    ```bash
 dmesg | grep NOM_MODULE
