@@ -122,4 +122,29 @@
   tail -n 100 /var/log/syslog
 
 
+## Systemd et services
 
+```markdown
+## Surveiller un service systemd
+
+- Vérifier s'il démarre automatiquement :
+  ```bash
+  systemctl is-enabled bidule
+
+- Vérifier son état :
+    ```bash
+systemctl status bidule
+
+- Activer le service :
+    ```bash
+systemctl enable bidule
+systemctl start bidule
+
+- Redémarrer :
+    ```bash
+systemctl restart bidule
+
+- Déterminer le paquet :
+    ```bash
+dpkg -S $(which bidule)  # Debian
+rpm -qf $(which bidule)  # Red Hat
