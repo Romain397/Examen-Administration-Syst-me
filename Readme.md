@@ -91,13 +91,25 @@
 ## Préparer un système pour développement
 
 ### Debian / Ubuntu
-```bash
+
     sudo apt update
     sudo apt install build-essential git gcc gdb make
 
-###Red Hat / Fedora
+### Red Hat / Fedora
     sudo dnf groupinstall "Development Tools"
     sudo dnf install git gcc gdb make
+
+
+---
+
+## Connexions utilisateurs et sudo
+
+## Qui fait quoi ?
+
+- Dernières connexions : 
+  ```bash
+  last
+  last -a
 
 
 
