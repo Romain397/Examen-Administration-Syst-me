@@ -65,3 +65,11 @@
 - WSL (Windows Subsystem for Linux) permet de lancer un environnement Linux sur Windows.
 - Permet d'exécuter des binaires Linux sans machine virtuelle.
 - Utilise un protocole interne pour traduire appels système Linux vers le noyau Windows.
+
+## Sécurisation SSH
+
+- Modifier `/etc/ssh/sshd_config` pour :
+  - Interdire root login : `PermitRootLogin no`
+  - Utiliser clés SSH plutôt que mot de passe : `PasswordAuthentication no`
+  - Limiter les utilisateurs autorisés : `AllowUsers user1 user2`
+- Redémarrer le service SSH : `sudo systemctl restart ssh`
