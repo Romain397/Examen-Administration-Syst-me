@@ -1,0 +1,206 @@
+# Examen Administration Système - 16 janvier 2026
+
+## Les deux familles
+
+### Principales distributions
+
+- **Famille Debian :**
+  - Debian, Ubuntu, Linux Mint
+- **Famille Red Hat :**
+  - Red Hat Enterprise Linux (RHEL), CentOS Stream, Fedora
+- **Autres :**
+  - Arch Linux, Gentoo, Alpine Linux, SUSE
+
+### Positionnement et outils d'administration
+
+- **Debian / Ubuntu :**
+  - Gestion de paquets : `apt`, `dpkg`
+  - Configuration simple, communauté large
+- **Red Hat / CentOS / Fedora :**
+  - Gestion de paquets : `yum`, `dnf`, `rpm`
+  - Orientation entreprise, support commercial RHEL
+- **Différences clés :**
+  - Outils de paquet différents
+  - Fichiers de configuration parfois différents (`/etc/apt/` vs `/etc/yum/`)
+
+## Back to basics
+
+- **Mode kernel/superviseur :** 
+  - Accès direct au matériel, exécution d’instructions privilégiées, gère la mémoire, pilotes, processus.
+- **Mode utilisateur :**
+  - Applications normales, accès limité, passent par appels système pour utiliser le hardware.
+
+## Qui est où ?
+
+- `/etc` : fichiers de configuration du système
+- `/bin` et `/usr/bin` : commandes binaires accessibles à tous
+- `/sbin` et `/usr/sbin` : commandes administratives
+- `/home` : répertoires personnels des utilisateurs
+- `/var` : fichiers variables (logs, bases, cache)
+- `/var/log` : fichiers journaux
+- `/var/lib` : données persistantes des applications (ex: bases locales)
+
+## Où est le pilote ?
+
+- Liste des pilotes chargés : 
+  ```bash
+  lsmod
+
+- Fichiers binaires des modules :
+    ```bash
+    modinfo NOM_MODULE
+
+- Charger/décharger un module :
+    ```bash
+    sudo modprobe NOM_MODULE  # charger
+    sudo modprobe -r NOM_MODULE  # décharger
+
+- Messages émis par les pilotes :
+    ```bash
+    dmesg | grep NOM_MODULE
+
+
+## MS Windows
+
+- WSL (Windows Subsystem for Linux) permet de lancer un environnement Linux sur Windows.
+- Permet d'exécuter des binaires Linux sans machine virtuelle.
+- Utilise un protocole interne pour traduire appels système Linux vers le noyau Windows.
+
+## Sécurisation SSH
+
+- Modifier `/etc/ssh/sshd_config` pour :
+  - Interdire root login
+  - Utiliser clés SSH plutôt que mot de passe 
+  - Limiter les utilisateurs autorisés 
+
+## Alerte clé publique SSH
+
+- Supprimer l'entrée existante dans `~/.ssh/known_hosts` ou utiliser :
+  ```bash
+  ssh-keygen -R hostname
+
+
+## Oh les gourmands
+
+- Identifier en une seule commande :
+  ```bash
+  du -sh /home/* | sort -hr | head -n 10
+
+
+
+## Préparer un système pour développement
+
+### Debian / Ubuntu
+
+    sudo apt update
+    sudo apt install build-essential git gcc gdb make
+
+### Red Hat / Fedora
+    sudo dnf groupinstall "Development Tools"
+    sudo dnf install git gcc gdb make
+
+
+## Connexions utilisateurs et sudo
+
+## Qui fait quoi ?
+
+- Dernières connexions : 
+  ```bash
+  last
+  last -a
+
+- Sessions sudo :
+    ```bash 
+        sudo cat /var/log/auth.log | grep 'sudo'
+
+
+## Post mortem
+
+- Examiner les logs système : 
+  ```bash
+  journalctl -b -1  # logs du dernier démarrage
+  tail -n 100 /var/log/syslog
+
+
+## Systemd et services
+
+## Surveiller un service systemd
+
+- Vérifier s'il démarre automatiquement :
+    ```bash
+        systemctl is-enabled bidule
+
+- Vérifier son état :
+    ```bash
+        systemctl status bidule
+
+- Activer le service :
+    ```bash
+        systemctl enable bidule
+        systemctl start bidule
+
+- Redémarrer :
+    ```bash
+        systemctl restart bidule
+
+- Déterminer le paquet :
+    ```bash
+        dpkg -S $(which bidule)  # Debian
+        rpm -qf $(which bidule)  # Red Hat
+
+
+## Récupérer la main sans mot de passe
+
+## Zut
+
+- Démarrer en mode single user depuis le bootloader (GRUB)
+- Modifier l'entrée pour ajouter `init=/bin/bash`
+- Remonter le système en lecture-écriture et changer mot de passe root :
+  ```bash
+  mount -o remount,rw /
+  passwd root
+
+
+## Diagnostiquer un service HTTP
+
+## C'est la faute à Rémy
+
+- Vérifier statut service : `systemctl status apache2` ou `nginx`
+- Tester écoute port : `ss -tulnp | grep 80`
+- Vérifier configuration : `apachectl configtest`
+- Vérifier logs : `/var/log/apache2/error.log` ou `/var/log/nginx/error.log`
+- Tester réseau : `ping`, `curl`, `traceroute`
+
+
+## Installer ElasticSearch sur Debian
+
+## Au charbon
+
+- Rechercher documentation officielle : https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+- Ajouter la clé GPG et le dépôt
+- Installer :
+  ```bash
+  sudo apt install elasticsearch
+
+Configurer dans /etc/elasticsearch/elasticsearch.yml
+
+- Démarrer et activer le service :
+
+systemctl enable elasticsearch
+systemctl start elasticsearch
+
+
+## Gérer un serveur Web mutualisé
+
+## Serveur Web Debian 
+
+- Paquets : `apache2`, `php`, `libapache2-mod-php`, `mysql-client`
+- Organisation des sites :
+  - `/var/www/site1`, `/var/www/site2`, etc.
+  - VirtualHosts dans `/etc/apache2/sites-available/`
+- Activer PHP : `a2enmod php`
+- Séparer logs : `CustomLog /var/log/apache2/site1.access.log combined`
+- Outils statistiques : `AWStats`, `GoAccess`, `Matomo`
+
+
+
