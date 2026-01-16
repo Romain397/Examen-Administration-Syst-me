@@ -109,5 +109,17 @@
   last
   last -a
 
+- Sessions sudo :
+   ```bash 
+sudo cat /var/log/auth.log | grep 'sudo'
+
+
+## Post mortem
+
+- Examiner les logs système : 
+  ```bash
+  journalctl -b -1  # logs du dernier démarrage
+  tail -n 100 /var/log/syslog
+
 
 
