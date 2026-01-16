@@ -149,9 +149,6 @@
         rpm -qf $(which bidule)  # Red Hat
 
 
-
----
-
 ## Récupérer la main sans mot de passe
 
 ## Zut
