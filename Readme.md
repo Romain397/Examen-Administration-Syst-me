@@ -190,3 +190,17 @@ systemctl enable elasticsearch
 systemctl start elasticsearch
 
 
+## Gérer un serveur Web mutualisé
+
+## Serveur Web Debian
+
+- Paquets : `apache2`, `php`, `libapache2-mod-php`, `mysql-client`
+- Organisation des sites :
+  - `/var/www/site1`, `/var/www/site2`, etc.
+  - VirtualHosts dans `/etc/apache2/sites-available/`
+- Activer PHP : `a2enmod php`
+- Séparer logs : `CustomLog /var/log/apache2/site1.access.log combined`
+- Outils statistiques : `AWStats`, `GoAccess`, `Matomo`
+
+
+
