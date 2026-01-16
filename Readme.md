@@ -127,23 +127,23 @@
 ## Surveiller un service systemd
 
 - Vérifier s'il démarre automatiquement :
-  ```bash
-  systemctl is-enabled bidule
+    ```bash
+        systemctl is-enabled bidule
 
 - Vérifier son état :
     ```bash
-systemctl status bidule
+        systemctl status bidule
 
 - Activer le service :
     ```bash
-systemctl enable bidule
-systemctl start bidule
+        systemctl enable bidule
+        systemctl start bidule
 
 - Redémarrer :
     ```bash
-systemctl restart bidule
+        systemctl restart bidule
 
 - Déterminer le paquet :
     ```bash
-dpkg -S $(which bidule)  # Debian
-rpm -qf $(which bidule)  # Red Hat
+        dpkg -S $(which bidule)  # Debian
+        rpm -qf $(which bidule)  # Red Hat
