@@ -160,3 +160,33 @@
   mount -o remount,rw /
   passwd root
 
+
+## Diagnostiquer un service HTTP
+
+## C'est la faute à Rémy
+
+- Vérifier statut service : `systemctl status apache2` ou `nginx`
+- Tester écoute port : `ss -tulnp | grep 80`
+- Vérifier configuration : `apachectl configtest`
+- Vérifier logs : `/var/log/apache2/error.log` ou `/var/log/nginx/error.log`
+- Tester réseau : `ping`, `curl`, `traceroute`
+
+
+## Installer ElasticSearch sur Debian
+
+## Au charbon
+
+- Rechercher documentation officielle : https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+- Ajouter la clé GPG et le dépôt
+- Installer :
+  ```bash
+  sudo apt install elasticsearch
+
+Configurer dans /etc/elasticsearch/elasticsearch.yml
+
+- Démarrer et activer le service :
+
+systemctl enable elasticsearch
+systemctl start elasticsearch
+
+
