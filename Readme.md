@@ -124,7 +124,6 @@
 
 ## Systemd et services
 
-```markdown
 ## Surveiller un service systemd
 
 - Vérifier s'il démarre automatiquement :
