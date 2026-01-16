@@ -72,3 +72,17 @@
   - Interdire root login
   - Utiliser clés SSH plutôt que mot de passe 
   - Limiter les utilisateurs autorisés 
+
+## Alerte clé publique SSH
+
+- Supprimer l'entrée existante dans `~/.ssh/known_hosts` ou utiliser :
+  ```bash
+  ssh-keygen -R hostname
+
+
+## Oh les gourmands
+
+- Identifier en une seule commande :
+  ```bash
+  du -sh /home/* | sort -hr | head -n 10
+
