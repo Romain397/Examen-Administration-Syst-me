@@ -192,7 +192,7 @@ systemctl start elasticsearch
 
 ## Gérer un serveur Web mutualisé
 
-## Serveur Web Debian
+## Serveur Web Debian 
 
 - Paquets : `apache2`, `php`, `libapache2-mod-php`, `mysql-client`
 - Organisation des sites :
