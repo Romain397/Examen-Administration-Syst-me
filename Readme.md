@@ -110,8 +110,8 @@
   last -a
 
 - Sessions sudo :
-   ```bash 
-    sudo cat /var/log/auth.log | grep 'sudo'
+    ```bash 
+        sudo cat /var/log/auth.log | grep 'sudo'
 
 
 ## Post mortem
