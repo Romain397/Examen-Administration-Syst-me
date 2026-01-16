@@ -111,7 +111,7 @@
 
 - Sessions sudo :
    ```bash 
-sudo cat /var/log/auth.log | grep 'sudo'
+    sudo cat /var/log/auth.log | grep 'sudo'
 
 
 ## Post mortem
