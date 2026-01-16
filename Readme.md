@@ -147,3 +147,19 @@
     ```bash
         dpkg -S $(which bidule)  # Debian
         rpm -qf $(which bidule)  # Red Hat
+
+
+
+---
+
+## Récupérer la main sans mot de passe
+
+## Zut
+
+- Démarrer en mode single user depuis le bootloader (GRUB)
+- Modifier l'entrée pour ajouter `init=/bin/bash`
+- Remonter le système en lecture-écriture et changer mot de passe root :
+  ```bash
+  mount -o remount,rw /
+  passwd root
+
